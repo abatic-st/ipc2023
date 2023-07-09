@@ -1,0 +1,135 @@
+object FClient: TFClient
+  Left = 0
+  Height = 374
+  Top = 0
+  Width = 727
+  Caption = 'Client'
+  ClientHeight = 374
+  ClientWidth = 727
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = FormClose
+  OnShow = FormShow
+  LCLVersion = '2.2.6.0'
+  object lbHeader: TLabel
+    Left = 241
+    Height = 33
+    Top = -3
+    Width = 134
+    Caption = 'TCP Client'
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Century Gothic'
+    ParentColor = False
+    ParentFont = False
+  end
+  object lbMsgSend: TLabel
+    Left = 8
+    Height = 22
+    Top = 51
+    Width = 154
+    Caption = 'Message to send'
+    Color = clBtnShadow
+    Font.Color = clGray
+    Font.Height = -19
+    Font.Name = 'Century Gothic'
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
+  object memoLog: TMemo
+    Left = 8
+    Height = 182
+    Top = 176
+    Width = 709
+    BorderStyle = bsNone
+    Color = clBlue
+    Font.Color = clLime
+    Font.Height = -17
+    Font.Name = 'Courier New'
+    Lines.Strings = (
+      ''
+    )
+    ParentFont = False
+    TabOrder = 0
+  end
+  object btnConnection: TButton
+    Cursor = crHandPoint
+    Left = 8
+    Height = 33
+    Top = 127
+    Width = 265
+    Caption = 'Connect to localhost server'
+    Font.Color = clInactiveCaption
+    Font.Height = -17
+    Font.Name = 'Century Gothic'
+    OnClick = btnConnectionClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object btnSender: TButton
+    Cursor = crHandPoint
+    Left = 563
+    Height = 33
+    Top = 127
+    Width = 154
+    Caption = 'Send Message'
+    Font.Color = clInactiveCaption
+    Font.Height = -17
+    Font.Name = 'Century Gothic'
+    OnClick = btnSenderClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object messageToSend: TMemo
+    Left = 8
+    Height = 45
+    Top = 76
+    Width = 709
+    BorderStyle = bsNone
+    Font.Color = clGray
+    Font.Height = -17
+    Font.Name = 'Courier New'
+    Lines.Strings = (
+      ''
+    )
+    ParentFont = False
+    TabOrder = 3
+  end
+  object btnDisconnect: TButton
+    Cursor = crHandPoint
+    Left = 287
+    Height = 33
+    Top = 127
+    Width = 137
+    Caption = 'Disconnect'
+    Default = True
+    Font.Color = clInactiveCaption
+    Font.Height = -17
+    Font.Name = 'Century Gothic'
+    OnClick = btnDisconnectClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object IdTCPClient: TIdTCPClient
+    OnDisconnected = btnDisconnectClick
+    OnConnected = IdTCPClientConnected
+    ConnectTimeout = 0
+    Host = 'localhost'
+    Port = 20010
+    ReadTimeout = -1
+    Left = 632
+    Top = 16
+  end
+  object IdThreadComponent: TIdThreadComponent
+    Active = False
+    Loop = False
+    Priority = tpNormal
+    StopMode = smTerminate
+    OnRun = IdThreadComponentRun
+    Left = 512
+    Top = 16
+  end
+end
